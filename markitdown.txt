@@ -1,0 +1,6 @@
+# 如何使用 markitdown
+# markitdown path-to-file.pdf > path-to-file.md
+# markitdown path-to-file.doc > path-to-file.md
+# markitdown path-to-file.docx > path-to-file.md
+# markitdown path-to-file.ppt > path-to-file.md
+# markitdown path-to-file.pptx > path-to-file.md

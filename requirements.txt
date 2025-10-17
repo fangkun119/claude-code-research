@@ -1,0 +1,2 @@
+# 项目依赖
+markitdown[all]==0.1.3
