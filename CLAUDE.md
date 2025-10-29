@@ -4,116 +4,111 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This repository is a research project for experimenting with and investigating Claude Code capabilities. The focus is on developing Claude Code Slash Commands, MCP (Model Context Protocol) servers, and Sub Agents for various purposes, with special emphasis on Chinese language document processing using pyramid principles and persuasive structure analysis.
+This is a research and experimentation repository for Claude Code capabilities, focusing on implementing Slash Commands, MCP (Model Context Protocol) servers, Sub-Agents, and document processing workflows.
 
 ## Repository Structure
 
-- **Root Directory**: Contains the main README.md with project documentation in Chinese
-- **.claude/**: Custom Claude Code components (commands, agents, settings)
-- **tasks/note/**: Experimental data and test cases for document processing research
-  - `test/`: Test cases with various document types (persuasive, narrative, technical, expository)
-  - `reference/`: Writing guides, pyramid principle documentation, persuasive techniques
-  - `example/`: Example outputs and processed documents
-  - `history/`: Version history showing evolution of commands and agents
-  - `draft/`: Intermediate files during document processing
+### Core Directories
 
-## Key Research Areas
+- **`.claude/`**: Claude Code configuration and permissions
+  - `settings.local.json`: Permissions configuration for allowed commands
+- **`tasks/`**: Main workspace for different task types
+  - `tasks/note/`: Document rewriting and note generation workflows
+  - `tasks/convert/`: Document conversion (PDF, PPT) processing
 
-The project experiments with:
-1. Custom slash commands calling other custom slash commands
-2. Sub agents calling slash commands
-3. Using filenames as parameters for slash commands and sub agents
-4. Data passing between slash commands and sub agents via files
-5. Document processing using pyramid principles (conclusion-first, 70%+ bulleted lists)
-6. Persuasive structure analysis and logical consistency checking
+### Document Processing Architecture
 
-## Architecture and Components
+The repository implements a sophisticated document processing pipeline based on the Pyramid Principle:
 
-### Custom Slash Commands (`.claude/commands/`)
+#### Reference Materials (`tasks/note/reference/`)
+- **Pyramid Principle guides**: Comprehensive writing methodology based on Barbara Minto's framework
+- **Persuasive writing techniques**: Methods for argument construction and issue analysis
+- These serve as knowledge bases for agent prompt engineering
 
-**Core Document Processing:**
-- **doc-pyramid-rewrite** (172 lines): Core document rewriting using pyramid principles
-  - Applies conclusion-first structure with 70%+ bulleted lists
-  - Preserves 8 types of argumentative structures
-  - Handles different content types with specialized processing
-- **doc-refine-titles** (109 lines): Intelligent title generation and hierarchy optimization
-  - Analyzes semantic structure to generate hierarchical titles
-  - Maintains zero-modification principle for original content
-- **doc-highlight-persuasive-structure** (188 lines): Identifies and highlights persuasive elements
-  - Recognizes various persuasive techniques and rhetorical structures
-- **doc-fluent** (130 lines): Converts content to fluent, conversational paragraphs
-- **doc-warn-logic-flaw** (230 lines): Detects logical inconsistencies and flaws
+#### Test Files (`tasks/note/test/`)
+- Sample documents for testing: narrative, expository, persuasive texts
+- Used for validating document processing workflows
 
-**Text Processing Variants:**
-- **text-\*** commands: Text-specific variants with same functionality as doc-* commands
+#### Historical Versions (`tasks/note/history/versions/`)
+- Timestamped snapshots of agent and command configurations
+- Tracks evolution of document processing capabilities
+- Format: `YYYYMMDD_HH/` containing agents/ and commands/ subdirectories
 
-### Custom Agents (`.claude/agents/`)
+## Claude Code Components
 
-**doc-rewriter Agent:**
-4-Step Document Refinement Pipeline:
-1. Title refinement (`/doc-refine-titles`) → creates `{filename}_titled.md`
-2. Structure analysis (`/doc-highlight-persuasive-structure`) → creates `{filename}_logic_highlighted.md`
-3. Content rewriting using pyramid principles → creates `{filename}_rewritten.md`
-4. File organization → moves intermediate files to `draft/` subdirectory
+### Permissions Configuration
+The `.claude/settings.local.json` defines allowed operations:
+- Directory creation commands
+- Document processing slash commands (`/re-wt:md-*`)
+- Specific workflow commands for text refinement
 
-**doc-polisher Agent:**
-Final enhancement processing with user requirement analysis:
-- Routes to `/doc-fluent` for readability improvements
-- Routes to `/doc-warn-logic-flaw` for logical analysis
-- Creates final `{filename}_polished.md` output
+### Slash Commands (Historical)
+Located in versioned directories, these commands implement:
+- `/doc-pyramid-rewrite`: Document restructuring using Pyramid Principle
+- `/doc-highlight-persuasive-structure`: Persuasive analysis enhancement
+- `/doc-refine-titles`: Title optimization
+- `/doc-fluent`: Text fluency improvement
+- `/doc-warn-logic-flaw`: Logic validation
+- `/doc-check-coverage`: Content coverage analysis
 
-### Document Processing Pipeline
+### Sub-Agents (Historical)
+Specialized agents for document processing:
+- `doc-polisher`: Text fluency and readability enhancement
+- `doc-rewriter`: Comprehensive document restructuring pipeline
 
-The research focuses on a structured workflow:
-1. **Title Processing**: Optimizes document titles and section headers using semantic analysis
-2. **Structure Analysis**: Identifies persuasive techniques and logical flow patterns
-3. **Content Rewriting**: Applies pyramid principle (conclusion-first, 70%+ bulleted lists)
-4. **Fluency Enhancement**: Improves readability and conversational flow
+## Development Workflow
 
-### File Organization Patterns
+### Document Processing Tasks
+1. **Input**: Raw text files in `tasks/note/test/`
+2. **Processing**: Apply specialized agents/commands based on document type
+3. **Output**: Rewritten documents with enhanced structure, logic, and readability
 
-**Intermediate Files:**
-- `{filename}_titled.md`: After title refinement
-- `{filename}_logic_highlighted.md`: After persuasive structure analysis
-- `{filename}_rewritten.md`: After pyramid principle rewriting
-- `{filename}_polished.md`: Final polished version
+### Agent Development
+- Agents are configured as markdown files with specific prompts
+- Historical versions track prompt evolution and effectiveness
+- New agents should follow the established naming convention and directory structure
 
-**Directory Structure:**
-- Test cases in `tasks/note/test/` with before/after comparisons
-- Reference materials in `tasks/note/reference/` for writing techniques
-- Draft files automatically organized in `draft/` subdirectories
-- Extensive history tracking in `tasks/note/history/`
+### Command Development
+- Slash commands are defined as markdown workflows
+- Commands leverage the Pyramid Principle methodology
+- Permission updates required in `.claude/settings.local.json` for new commands
 
-## Development Commands
+## Key Methodologies
 
-This is a research repository without traditional build/test infrastructure. All functionality is provided through Claude Code platform configuration.
+### Pyramid Principle Application
+This repository heavily implements Barbara Minto's Pyramid Principle:
+- **Conclusion first**: Start with main conclusions
+- **Logical grouping**: MECE (Mutually Exclusive, Collectively Exhaustive) categorization
+- **Hierarchical structure**: Clear parent-child relationships between ideas
+- **Question-answer flow**: Natural progression from reader questions to answers
 
-### Common Operations
+### Document Types Handled
+- **Narrative texts**: Storytelling and descriptive content
+- **Expository texts**: Informational and educational content
+- **Persuasive texts**: Argumentative and analytical content
+- **Technical documentation**: Process and technical explanations
 
-**Single Command Processing:**
-- Test document processing: `/doc-pyramid-rewrite path/to/document.md`
-- Refine titles: `/doc-refine-titles path/to/document.md`
-- Analyze persuasive structure: `/doc-highlight-persuasive-structure path/to/document.md`
-- Improve fluency: `/doc-fluent path/to/document.md`
-- Check logic: `/doc-warn-logic-flaw path/to/document.md`
+## Common Development Tasks
 
-**Multi-step Pipeline Processing:**
-- Run complete refinement pipeline: Use Task tool with doc-rewriter agent
-- Apply final polishing: Use Task tool with doc-polisher agent
+### Adding New Document Processing Workflows
+1. Create test cases in `tasks/note/test/`
+2. Develop agent configurations in appropriate versioned directory
+3. Update permissions in `.claude/settings.local.json`
+4. Test with existing reference materials
 
-**File Management:**
-- Check permissions: Review `.claude/settings.local.json` for allowed commands
-- View test cases: Examine `tasks/note/test/` directory for examples
-- Reference guides: Consult `tasks/note/reference/` for writing principles
+### Managing Agent Versions
+- Use timestamped directories for version control
+- Maintain backward compatibility when possible
+- Document changes in agent configuration files
 
-### Security Configuration
+### Processing New Document Types
+- Add reference materials to `tasks/note/reference/`
+- Create specialized test cases
+- Develop targeted processing workflows
 
-The repository uses granular permission control in `.claude/settings.local.json`:
-- Specific bash commands are whitelisted (python3, chmod, cp, find, etc.)
-- All custom slash commands require explicit permission
-- File operations are restricted to safe patterns
-- No external dependencies or runtime requirements
+## Notes
 
-## Language Context
-
-The repository documentation and experimental data are primarily in Chinese, focusing on Claude Code plugin functionality and technical note generation capabilities. The slash commands support both English and Chinese content processing, with special optimization for Chinese language structure and flow patterns.
+- This is primarily a research repository for Claude Code capabilities
+- Focus is on document processing and text enhancement workflows
+- Version history is maintained for both development and research purposes
+- The repository structure supports systematic experimentation with different AI-assisted writing methodologies.

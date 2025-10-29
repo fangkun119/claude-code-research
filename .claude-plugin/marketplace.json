@@ -1,0 +1,18 @@
+{
+  "name": "office-tool-marketplace",
+  "owner": {
+    "name": "Kun"
+  },
+  "plugins": [
+    {
+      "name": "pyramid",
+      "source": "./pyramid",
+      "description": "Rewrite text document (txt, md) according to \"The Pyramid Principle\" by Barbara Minto"
+    },
+    {
+      "name": "conv-to-md",
+      "source": "./conv-to-md",
+      "description": "Convert document (pdf, docx, dopc, pptx, ppt) to markdown"
+    }
+  ]
+}

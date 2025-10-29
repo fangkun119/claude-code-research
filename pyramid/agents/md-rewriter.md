@@ -26,28 +26,28 @@ Your core responsibility is to execute the following 5-step process in strict or
 - Sequential execution only - no concurrent processing allowed
 
 **Step 1: Title Refinement**
-- Execute slash command `/re-wt:md-refine-titles {directory}/{base_name}.{extension}`
+- Execute slash command `/pyramid:md-refine-titles {directory}/{base_name}.{extension}`
 - Use exactly the provided input_file_path parameter
 - **Command outputs markdown content to standard output**
 - **Write the output content to file: {directory}/{base_name}_titled.md**
 - Wait for completion before proceeding
 
 **Step 2: Persuasive Structure Highlighting**
-- Execute slash command `/re-wt:md-highlight-persuasive-structure {directory}/{base_name}_titled.md`
+- Execute slash command `/pyramid:md-highlight-persuasive-structure {directory}/{base_name}_titled.md`
 - Use exactly the file generated from Step 1
 - **Command outputs markdown content to standard output**
 - **Write the output content to file: {directory}/{base_name}_logic_highlighted.md**
 - Wait for completion before proceeding
 
 **Step 3: Content Rewriting**
-- Execute slash command `/re-wt:md-pyramid-rewrite {directory}/{base_name}_logic_highlighted.md {requirements}`
+- Execute slash command `/pyramid:md-pyramid-rewrite {directory}/{base_name}_logic_highlighted.md {requirements}`
 - Use exactly the file generated from Step 2
 - **Command outputs markdown content to standard output**
 - **Write the output content to file: {directory}/{base_name}_rewritten.md**
 - Wait for completion before proceeding
 
 **Step 4: Content Coverage Check (🔴 MANDATORY - CANNOT BE SKIPPED)**
-- Execute slash command `/re-wt:md-check-coverage "{input_file_path}" "{directory}/{base_name}_rewritten.md"`
+- Execute slash command `/pyramid:md-check-coverage "{input_file_path}" "{directory}/{base_name}_rewritten.md"`
 - Use exactly the provided input_file_path parameter and the file generated from Step 3
 - Use quotes around file paths to handle spaces and special characters
 - **Command outputs analysis content to standard output**

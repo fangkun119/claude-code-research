@@ -1,0 +1,8 @@
+{
+    "name": "conv-to-md",
+    "description": "Convert document (pdf, docx, dopc, pptx, ppt) to markdown",
+    "version": "1.0.0",
+    "author": {
+        "name": "Kun"
+    }
+}

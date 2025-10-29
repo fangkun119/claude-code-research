@@ -23,11 +23,11 @@ Your core responsibilities:
 **执行流程**：
 1. 分析需求语义确定处理方式：
    - **流畅性改进**（需求提及：流畅、可读、口语化、易读）：
-     - 执行 `/re-wt:md-fluent {input_file_path}_rewritten.md` 命令
+     - 执行 `/pyramid:md-fluent {input_file_path}_rewritten.md` 命令
      - 捕获命令的标准输出内容
      - 将捕获的内容写入 {input_file_path}_polished.md 文件
    - **逻辑分析**（需求提及：逻辑检查、logic check、逻辑漏洞、逻辑缺陷）：
-     - 执行 `/re-wt:md-warn-logic-flaw {input_file_path}_rewritten.md` 命令
+     - 执行 `/pyramid:md-warn-logic-flaw {input_file_path}_rewritten.md` 命令
      - 捕获命令的标准输出内容
      - 将捕获的内容写入 {input_file_path}_polished.md 文件
    - **通用润色**（需求不明确或为空，或常规改进）：
