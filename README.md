@@ -46,7 +46,7 @@ git clone git@github.com:fangkun119/claude-code-research.git
 claude 
 
 # 执行/plugin命令添加marketplace
-/plugin marketplace add /Users/ken/Code/cursor/claude-code-research/
+/plugin marketplace add /Users/ken/Code/claude-code-research/
 ```
 
 ### 使用方法
@@ -60,7 +60,7 @@ claude
 @agent-pyramid:md-polisher @my_file_rewritten.md "检查逻辑" 
 ```
 
-文档转换技能：通过自然语言触发，如果在提示词中提到这个skill的名称`md-gen`可以对skill触发率有更好的保证
+文档转换技能：通过自然语言触发，如果在提示词中提到这个skill的名称`conv-to-md:md-gen`可以对skill触发率有更好的保证
 
 ```txt
 将 @to_path/myfile.docx 转换成 markdown
